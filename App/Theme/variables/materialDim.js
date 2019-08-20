@@ -3,12 +3,7 @@
 import color from 'color';
 import {Platform, Dimensions, PixelRatio} from 'react-native';
 
-const PLATFORM = {
-  ANDROID: 'android',
-  IOS: 'ios',
-  MATERIAL: 'material',
-  WEB: 'web',
-};
+import {PLATFORM} from './commonColor';
 
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
@@ -110,8 +105,8 @@ export default {
   },
 
   // Card
-  cardDefaultBg: '#FFF',
-  cardBorderColor: '#E6ECF0',
+  cardDefaultBg: '#15202B',
+  cardBorderColor: '#38444D',
   cardBorderRadius: 2,
   cardItemPadding: platform === PLATFORM.IOS ? 10 : 12,
 
@@ -125,7 +120,7 @@ export default {
   CheckboxFontSize: 17,
   checkboxBgColor: '#039BE5',
   checkboxSize: 20,
-  checkboxTickColor: '#FFF',
+  checkboxTickColor: '#fff',
 
   // Color
   brandPrimary: '#009878',
@@ -137,7 +132,7 @@ export default {
   brandLight: '#f4f4f4',
 
   // Container
-  containerBgColor: '#FFF',
+  containerBgColor: '#15202B',
 
   // Date Picker
   datePickerTextColor: '#000',
@@ -162,7 +157,7 @@ export default {
 
   // Footer
   footerHeight: 55,
-  footerDefaultBg: '#FFF',
+  footerDefaultBg: '#15202B',
   footerPaddingBottom: 0,
 
   // FooterTab
@@ -175,14 +170,14 @@ export default {
 
   // Header
   toolbarBtnColor: '#009878',
-  toolbarDefaultBg: '#FFF',
+  toolbarDefaultBg: '#15202B',
   toolbarHeight: 56,
   toolbarSearchIconSize: 23,
   toolbarInputColor: '#009878',
   searchBarHeight: platform === PLATFORM.IOS ? 30 : 40,
   searchBarInputHeight: platform === PLATFORM.IOS ? 40 : 50,
   toolbarBtnTextColor: '#009878',
-  toolbarDefaultBorder: '#FFF',
+  toolbarDefaultBorder: '#15202B',
   iosStatusbar: 'light-content',
   get statusBarColor() {
     return color(this.toolbarDefaultBg)
@@ -222,7 +217,7 @@ export default {
 
   // List
   listBg: 'transparent',
-  listBorderColor: '#E6ECF0',
+  listBorderColor: '#c9c9c9',
   listDividerBg: '#f4f4f4',
   listBtnUnderlayColor: '#DDD',
   listItemPadding: 12,
@@ -266,9 +261,9 @@ export default {
   tabFontSize: 15,
 
   // Text
-  textColor: '#000',
-  inverseTextColor: '#fff',
-  noteColor: '#A7A7A7',
+  textColor: '#fff',
+  inverseTextColor: '#000',
+  noteColor: '#8899A6',
   noteFontSize: 14,
   get defaultTextColor() {
     return this.textColor;

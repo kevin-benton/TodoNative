@@ -1,8 +1,9 @@
 import {createReducer, createActions} from 'reduxsauce';
 import Immutable from 'seamless-immutable';
 
-import MaterialDimTheme from 'TodoNative/App/Theme/MaterialDimTheme';
-import MaterialLightTheme from 'TodoNative/App/Theme/MaterialLightTheme';
+/* ------------- Constants ------------- */
+export const LIGHT_THEME = 'light';
+export const DIM_THEME = 'dim';
 
 /* ------------- Types and Actions ------------- */
 
@@ -17,7 +18,7 @@ export default Creators;
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-  currentTheme: MaterialLightTheme,
+  currentTheme: LIGHT_THEME,
 });
 
 /* ------------- Selectors ------------- */
@@ -28,10 +29,8 @@ export const ThemeSelectors = {
 
 /* ------------- Reducers ------------- */
 
-export const useLightTheme = state =>
-  state.merge({currentTheme: MaterialLightTheme});
-export const useDimTheme = state =>
-  state.merge({currentTheme: MaterialDimTheme});
+export const useLightTheme = state => state.merge({currentTheme: LIGHT_THEME});
+export const useDimTheme = state => state.merge({currentTheme: DIM_THEME});
 
 /* ------------- Hookup Reducers To Types ------------- */
 

@@ -7,7 +7,7 @@ import TodosScreen from 'TodoNative/App/Screens/Todos/TodosScreen';
 
 const AppNavigator = createDrawerNavigator(
   {
-    Todos: TodosScreen,
+    Todos: {screen: TodosScreen},
   },
   {
     contentComponent: props => <SideBar {...props} />,

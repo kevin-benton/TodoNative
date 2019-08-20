@@ -2,12 +2,8 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Button, Icon} from 'native-base';
-import {clearThemeCache} from 'native-base-shoutem-theme';
 
-// This is the only place other than the theme redux file where the themes should be imported directly.
-import MaterialLightTheme from 'TodoNative/App/Theme/MaterialLightTheme';
-
-import Creators from 'TodoNative/App/Redux/ThemeRedux';
+import Creators, {LIGHT_THEME} from 'TodoNative/App/Redux/ThemeRedux';
 
 class ThemeChanger extends Component {
   constructor(props) {
@@ -15,12 +11,9 @@ class ThemeChanger extends Component {
   }
 
   toggleTheme() {
-    const currentBgColor = this.props.theme.currentTheme.containerBgColor;
-    const lightBgColor = MaterialLightTheme.containerBgColor;
+    const currentTheme = this.props.theme.currentTheme;
 
-    clearThemeCache();
-
-    if (currentBgColor === lightBgColor) {
+    if (currentTheme === LIGHT_THEME) {
       this.props.useDimTheme();
     } else {
       this.props.useLightTheme();
@@ -29,8 +22,7 @@ class ThemeChanger extends Component {
 
   render() {
     const icon =
-      this.props.theme.currentTheme.containerBgColor ===
-      MaterialLightTheme.containerBgColor
+      this.props.theme.currentTheme === LIGHT_THEME
         ? 'md-cloud'
         : 'md-cloud-outline';
 
