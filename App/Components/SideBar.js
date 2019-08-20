@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {StyleSheet} from 'react-native';
 import {
   Container,
   Content,
@@ -24,7 +25,7 @@ export default class SideBar extends Component {
         <Content>
           <List
             dataArray={routes}
-            contentContainerStyle={{marginTop: 120}}
+            contentContainerStyle={styles.listContainer}
             renderRow={data => {
               return (
                 <ListItem
@@ -46,3 +47,9 @@ export default class SideBar extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  listContainer: {
+    marginTop: 120,
+  },
+});
