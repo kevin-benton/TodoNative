@@ -1,13 +1,25 @@
-import React, { Component } from 'react';
-import { Body, Button, Container, Header, Content, Card, CardItem, Icon, Left, Right, Spinner, Text, Title } from 'native-base';
+import React, {Component} from 'react';
+import {
+  Body,
+  Button,
+  Container,
+  Header,
+  Content,
+  Icon,
+  Left,
+  Right,
+  Title,
+} from 'native-base';
 
 export default class TodosScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      header: (
+  render() {
+    return (
+      <Container>
         <Header>
           <Left>
-            <Button transparent onPress={() => navigation.openDrawer()}>
+            <Button
+              transparent
+              onPress={() => this.props.navigation.openDrawer()}>
               <Icon name="menu" />
             </Button>
           </Left>
@@ -16,17 +28,14 @@ export default class TodosScreen extends Component {
           </Body>
           <Right />
         </Header>
-      )
-    };
-  };
-
-  render() {
-    return (
-      <Container>
-        <Content padder>
-
-        </Content>
+        <Content padder />
       </Container>
     );
   }
 }
+
+TodosScreen.navigationOptions = ({navigation}) => {
+  return {
+    header: null,
+  };
+};

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { StyleProvider } from 'native-base';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {StyleProvider} from 'native-base';
 
 import getTheme from 'TodoNative/native-base-theme/components';
 import AppNavigation from 'TodoNative/App/Navigation/AppNavigation';
@@ -10,17 +10,24 @@ class RootContainer extends Component {
     super(props);
   }
 
+  shouldComponentUpdate(nextProps) {
+    return (
+      nextProps.theme.currentTheme.containerBgColor !==
+      this.props.theme.currentTheme.containerBgColor
+    );
+  }
+
   render() {
     return (
-      <StyleProvider style={getTheme(this.props.theme)}>
+      <StyleProvider style={getTheme(this.props.theme.currentTheme)}>
         <AppNavigation />
       </StyleProvider>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return { theme: state.theme.theme };
+const mapStateToProps = state => {
+  return {...state};
 };
 
 export default connect(mapStateToProps)(RootContainer);

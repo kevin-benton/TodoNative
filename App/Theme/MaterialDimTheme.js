@@ -1,13 +1,13 @@
 // @flow
 
 import color from 'color';
-import { Platform, Dimensions, PixelRatio } from 'react-native';
+import {Platform, Dimensions, PixelRatio} from 'react-native';
 
 const PLATFORM = {
   ANDROID: 'android',
   IOS: 'ios',
   MATERIAL: 'material',
-  WEB: 'web'
+  WEB: 'web',
 };
 
 const deviceHeight = Dimensions.get('window').height;
@@ -162,7 +162,7 @@ export default {
 
   // Footer
   footerHeight: 55,
-  footerDefaultBg: '#3F51B5',
+  footerDefaultBg: '#15202B',
   footerPaddingBottom: 0,
 
   // FooterTab
@@ -298,13 +298,13 @@ export default {
       topInset: 24,
       leftInset: 0,
       rightInset: 0,
-      bottomInset: 34
+      bottomInset: 34,
     },
     landscape: {
       topInset: 0,
       leftInset: 44,
       rightInset: 44,
-      bottomInset: 21
-    }
-  }
+      bottomInset: 21,
+    },
+  },
 };
