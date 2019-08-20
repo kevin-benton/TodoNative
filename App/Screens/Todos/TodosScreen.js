@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Alert} from 'react-native';
 import {
   Body,
   Button,
@@ -15,8 +14,6 @@ import {
 
 class TodosScreen extends Component {
   render() {
-    Alert.alert('Screen', 'Rerender');
-
     return (
       <Container>
         <Header>
