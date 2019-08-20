@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Button, Icon} from 'native-base';
+import {clearThemeCache} from 'native-base-shoutem-theme';
 
 import Creators, {LIGHT_THEME} from 'TodoNative/App/Redux/ThemeRedux';
 
@@ -12,6 +13,7 @@ class ThemeChanger extends Component {
 
   toggleTheme() {
     const currentTheme = this.props.theme.currentTheme;
+    clearThemeCache();
 
     if (currentTheme === LIGHT_THEME) {
       this.props.useDimTheme();

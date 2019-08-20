@@ -47,11 +47,7 @@ import separatorTheme from './Separator';
 import pickerTheme from './Picker';
 import variable from './../variables/platform';
 
-import {clearThemeCache} from 'native-base-shoutem-theme';
-
 export default (variables /* : * */ = variable) => {
-  clearThemeCache();
-
   const theme = {
     variables,
     'NativeBase.Left': {

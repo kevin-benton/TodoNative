@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Alert} from 'react-native';
 import {
   Body,
   Button,
@@ -11,8 +13,10 @@ import {
   Title,
 } from 'native-base';
 
-export default class TodosScreen extends Component {
+class TodosScreen extends Component {
   render() {
+    Alert.alert('Screen', 'Rerender');
+
     return (
       <Container>
         <Header>
@@ -39,3 +43,9 @@ TodosScreen.navigationOptions = ({navigation}) => {
     header: null,
   };
 };
+
+const mapStateToProps = state => {
+  return {...state};
+};
+
+export default connect(mapStateToProps)(TodosScreen);
