@@ -26,7 +26,7 @@ export const getTodosRequest = state => state.merge({isLoading: true});
 export const getTodosSuccess = (state, action) =>
   state.merge({isLoading: false, data: action.todos, error: null});
 export const getTodosFailure = (state, error) =>
-  state.merge({idLoading: false, data: [], error: error});
+  state.merge({isLoading: false, data: [], error: error});
 
 /* ------------- Hookup Reducers To Types ------------- */
 

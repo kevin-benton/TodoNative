@@ -1,70 +1,69 @@
-import Creators from 'TodoNative/App/Redux/TodosRedux';
-import TodoService from 'TodoNative/App/Services/TodoService';
+import GetTodosCreators from 'TodoNative/App/Redux/GetTodosRedux';
+import CreateTodoCreators from 'TodoNative/App/Redux/CreateTodoRedux';
+import UpdateTodoCreators from 'TodoNative/App/Redux/UpdateTodoRedux';
+import DeleteTodoCreators from 'TodoNative/App/Redux/DeleteTodoRedux';
 
-export default (getTodos = () => {
+import TodoApiService from 'TodoNative/App/Services/TodoApiService';
+
+const getTodos = () => {
   return dispatch => {
-    const todoService = TodoService.create();
+    dispatch(GetTodosCreators.getTodosRequest());
 
-    dispatch(Creators.getTodosRequest());
-
-    todoService
-      .getTodos()
+    TodoApiService.getTodos()
       .then(res => {
-        dispatch(Creators.getTodosSuccess(res.data));
+        dispatch(GetTodosCreators.getTodosSuccess(res.data));
       })
       .catch(error => {
-        dispatch(Creators.getTodosFailure(error.message));
+        dispatch(GetTodosCreators.getTodosFailure(error.message));
       });
   };
-});
+};
 
 const createTodo = name => {
   return dispatch => {
-    const todoService = TodoService.create();
+    dispatch(CreateTodoCreators.createTodoRequest());
 
-    dispatch(Creators.createTodoRequest());
-
-    todoService
-      .createTodo(name)
+    TodoApiService.createTodo(name)
       .then(res => {
-        dispatch(Creators.createTodoSuccess());
+        dispatch(CreateTodoCreators.createTodoSuccess(res.data));
       })
       .then(error => {
-        dispatch(Creators.createTodoFailure());
+        dispatch(CreateTodoCreators.createTodoFailure());
       });
   };
 };
 
 const updateTodo = todo => {
   return dispatch => {
-    const todoService = TodoService.create();
+    dispatch(UpdateTodoCreators.updateTodoRequest());
 
-    dispatch(Creators.updateTodoRequest());
-
-    todoService
-      .updateTodo(todo)
+    TodoApiService.updateTodo(todo)
       .then(res => {
-        dispatch(Creators.updateTodoSuccess());
+        dispatch(UpdateTodoCreators.updateTodoSuccess());
       })
       .then(error => {
-        dispatch(Creators.updateTodoFailure());
+        dispatch(UpdateTodoCreators.updateTodoFailure());
       });
   };
 };
 
 const deleteTodo = id => {
   return dispatch => {
-    const todoService = TodoService.create();
+    dispatch(DeleteTodoCreators.deleteTodoRequest());
 
-    dispatch(Creators.deleteTodoRequest());
-
-    todoService
-      .deleteTodo(id)
+    TodoApiService.deleteTodo(id)
       .then(res => {
-        dispatch(Creators.deleteTodoSuccess());
+        dispatch(DeleteTodoCreators.deleteTodoSuccess());
       })
       .then(error => {
-        dispatch(Creators.deleteTodoFailure());
+        dispatch(DeleteTodoCreators.deleteTodoFailure());
       });
   };
+};
+
+export default {
+  getTodos,
+  createTodo,
+  updateTodo,
+  deleteTodo,
 };

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
-import Config from 'react-native-config';
 import PropTypes from 'prop-types';
 import {
   Body,
@@ -14,9 +13,22 @@ import {
   Text,
 } from 'native-base';
 
+import Colors from 'TodoNative/App/Config/Colors';
+
 export default class Todos extends Component {
   constructor(props) {
     super(props);
+  }
+
+  toggleComplete(todo) {
+    const update = {
+      id: todo.id,
+      name: todo.name,
+      completed: !todo.completed,
+      created: todo.created,
+    };
+
+    this.props.update(update);
   }
 
   render() {
@@ -35,7 +47,7 @@ export default class Todos extends Component {
             <ListItem key={x.id} button>
               <CheckBox
                 checked={x.completed}
-                onPress={() => this.props.update(x)}
+                onPress={() => this.toggleComplete(x)}
               />
               <Body>
                 <Text>{x.name}</Text>
@@ -64,7 +76,7 @@ Todos.propTypes = {
 
 const styles = StyleSheet.create({
   trashIcon: {
-    color: Config.BRAND_DANGER,
+    color: Colors.BRAND_DANGER,
   },
   content: {
     justifyContent: 'space-between',
