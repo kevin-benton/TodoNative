@@ -3,6 +3,8 @@
 import color from 'color';
 import {Platform, Dimensions, PixelRatio} from 'react-native';
 
+import Config from 'react-native-config';
+
 import {PLATFORM} from './commonColor';
 
 const deviceHeight = Dimensions.get('window').height;
@@ -118,17 +120,18 @@ export default {
   CheckboxIconSize: 16,
   CheckboxIconMarginTop: 1,
   CheckboxFontSize: 17,
-  checkboxBgColor: '#039BE5',
+  checkboxBgColor: Config.BRAND_PRIMARY,
   checkboxSize: 20,
-  checkboxTickColor: '#FFF',
+  checkboxTickColor: '#fff',
+  checkboxDefaultColor: 'transparent',
 
   // Color
-  brandPrimary: '#009878',
-  brandInfo: '#92D7F6',
-  brandSuccess: '#A1D45D',
-  brandDanger: '#9E2842',
-  brandWarning: '#EF5923',
-  brandDark: '#490A60',
+  brandPrimary: Config.BRAND_PRIMARY,
+  brandInfo: Config.BRAND_INFO,
+  brandSuccess: Config.BRAND_SUCCESS,
+  brandDanger: Config.BRAND_DANGER,
+  brandWarning: Config.BRAND_WARNING,
+  brandDark: Config.BRAND_DARK,
   brandLight: '#f4f4f4',
 
   // Container
@@ -169,14 +172,14 @@ export default {
   tabActiveBgColor: '#3F51B5',
 
   // Header
-  toolbarBtnColor: '#009878',
+  toolbarBtnColor: Config.BRAND_PRIMARY,
   toolbarDefaultBg: '#FFF',
   toolbarHeight: 56,
   toolbarSearchIconSize: 23,
-  toolbarInputColor: '#009878',
+  toolbarInputColor: Config.BRAND_PRIMARY,
   searchBarHeight: platform === PLATFORM.IOS ? 30 : 40,
   searchBarInputHeight: platform === PLATFORM.IOS ? 40 : 50,
-  toolbarBtnTextColor: '#009878',
+  toolbarBtnTextColor: Config.BRAND_PRIMARY,
   toolbarDefaultBorder: '#FFF',
   iosStatusbar: 'light-content',
   get statusBarColor() {

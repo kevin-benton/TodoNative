@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {StyleProvider} from 'native-base';
+import {Root, StyleProvider} from 'native-base';
 
 import AppNavigation from 'TodoNative/App/Navigation/AppNavigation';
 import getTheme from 'TodoNative/App/Theme/components';
@@ -20,7 +20,9 @@ class RootContainer extends Component {
 
     return (
       <StyleProvider style={getTheme(themes[this.props.theme.currentTheme])}>
-        <AppNavigation />
+        <Root>
+          <AppNavigation />
+        </Root>
       </StyleProvider>
     );
   }
