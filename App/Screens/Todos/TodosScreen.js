@@ -16,7 +16,7 @@ class TodosScreen extends Component {
   }
 
   componentDidMount() {
-    return this.props.getTodos();
+    return this.props.readAllTodos();
   }
 
   render() {
@@ -30,8 +30,8 @@ class TodosScreen extends Component {
 
         <SafeAreaView style={styles.safeArea}>
           <Todos
-            isLoading={this.props.todos.isLoading}
-            todos={this.props.todos.data}
+            isLoading={this.props.readTodos.isLoading}
+            todos={this.props.readTodos.data}
             update={this.props.updateTodo}
             delete={this.props.deleteTodo}
           />

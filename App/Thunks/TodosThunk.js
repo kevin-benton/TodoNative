@@ -1,20 +1,20 @@
-import GetTodosCreators from 'TodoNative/App/Redux/GetTodosRedux';
 import CreateTodoCreators from 'TodoNative/App/Redux/CreateTodoRedux';
+import ReadTodosCreators from 'TodoNative/App/Redux/ReadTodosRedux';
 import UpdateTodoCreators from 'TodoNative/App/Redux/UpdateTodoRedux';
 import DeleteTodoCreators from 'TodoNative/App/Redux/DeleteTodoRedux';
 
 import TodoApiService from 'TodoNative/App/Services/TodoApiService';
 
-const getTodos = () => {
+const readAllTodos = () => {
   return dispatch => {
-    dispatch(GetTodosCreators.getTodosRequest());
+    dispatch(ReadTodosCreators.readTodosRequest());
 
     TodoApiService.getTodos()
       .then(res => {
-        dispatch(GetTodosCreators.getTodosSuccess(res.data));
+        dispatch(ReadTodosCreators.readTodosSuccess(res.data));
       })
       .catch(error => {
-        dispatch(GetTodosCreators.getTodosFailure(error.message));
+        dispatch(ReadTodosCreators.readTodosFailure(error.message));
       });
   };
 };
@@ -62,7 +62,7 @@ const deleteTodo = id => {
 };
 
 export default {
-  getTodos,
+  readAllTodos,
   createTodo,
   updateTodo,
   deleteTodo,
