@@ -4,12 +4,12 @@ import Immutable from 'seamless-immutable';
 /* ------------- Types and Actions ------------- */
 
 const {Types, Creators} = createActions({
-  readTodosRequest: null,
-  readTodosSuccess: ['todos'],
-  readTodosFailure: ['error'],
+  todosRequest: null,
+  setTodos: ['todos'],
+  setTodosError: ['error'],
 });
 
-export const ReadTodoTypes = Types;
+export const TodosTypes = Types;
 export default Creators;
 
 /* ------------- Initial State ------------- */
@@ -22,16 +22,16 @@ export const INITIAL_STATE = Immutable({
 
 /* ------------- Reducers ------------- */
 
-export const readTodosRequest = state => state.merge({isLoading: true});
-export const readTodosSuccess = (state, action) =>
+export const todosRequest = state => state.merge({isLoading: true});
+export const setTodos = (state, action) =>
   state.merge({isLoading: false, data: action.todos, error: null});
-export const readTodosFailure = (state, error) =>
-  state.merge({isLoading: false, data: [], error: error});
+export const setTodosError = (state, error) =>
+  state.merge({isLoading: false, error: error});
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.READ_TODOS_REQUEST]: readTodosRequest,
-  [Types.READ_TODOS_SUCCESS]: readTodosSuccess,
-  [Types.READ_TODOS_FAILURE]: readTodosFailure,
+  [Types.TODOS_REQUEST]: todosRequest,
+  [Types.SET_TODOS]: setTodos,
+  [Types.SET_TODOS_ERROR]: setTodosError,
 });

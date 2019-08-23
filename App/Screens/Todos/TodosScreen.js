@@ -8,7 +8,7 @@ import {Container} from 'native-base';
 import AppHeader from 'TodoNative/App/Components/AppHeader';
 import TodoInput from 'TodoNative/App/Components/TodoInput';
 import Todos from 'TodoNative/App/Components/Todos';
-import Actions from 'TodoNative/App/Thunks/TodosThunk';
+import Actions from 'TodoNative/App/Thunks/Todos';
 
 class TodosScreen extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class TodosScreen extends Component {
   }
 
   componentDidMount() {
-    return this.props.readAllTodos();
+    return this.props.getAllTodos();
   }
 
   render() {
@@ -30,8 +30,8 @@ class TodosScreen extends Component {
 
         <SafeAreaView style={styles.safeArea}>
           <Todos
-            isLoading={this.props.readTodos.isLoading}
-            todos={this.props.readTodos.data}
+            isLoading={this.props.todos.isLoading}
+            todos={this.props.todos.data}
             update={this.props.updateTodo}
             delete={this.props.deleteTodo}
           />

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Button, Icon} from 'native-base';
 import {clearThemeCache} from 'native-base-shoutem-theme';
 
-import Creators, {LIGHT_THEME} from 'TodoNative/App/Redux/ThemeRedux';
+import Creators, {LIGHT_THEME} from 'TodoNative/App/Redux/Theme';
 
 class ThemeChanger extends Component {
   constructor(props) {

@@ -2,11 +2,8 @@ import {applyMiddleware, combineReducers, createStore} from 'redux';
 import thunk from 'redux-thunk';
 
 export const reducers = combineReducers({
-  theme: require('./ThemeRedux').reducer,
-  readTodos: require('./ReadTodosRedux').reducer,
-  createTodo: require('./CreateTodoRedux').reducer,
-  updateTodo: require('./UpdateTodoRedux').reducer,
-  deleteTodo: require('./DeleteTodoRedux').reducer,
+  theme: require('./Theme').reducer,
+  todos: require('./Todos').reducer,
 });
 
 export default () => {
