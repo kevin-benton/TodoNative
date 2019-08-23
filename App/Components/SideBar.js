@@ -1,24 +1,32 @@
 import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import {
+  Button,
   Container,
   Content,
   Footer,
+  Icon,
   Left,
   List,
   ListItem,
   Text,
 } from 'native-base';
 
-import ThemeChanger from 'TodoNative/App/Components/ThemeChanger';
+import ThemeActions, {LIGHT_THEME} from 'TodoNative/App/Redux/Theme';
 
-export default class SideBar extends Component {
+class SideBar extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     const routes = ['Todos'];
+
+    const {theme} = this.props;
+    const icon =
+      theme.currentTheme === LIGHT_THEME ? 'md-cloud' : 'md-cloud-outline';
 
     return (
       <Container>
@@ -40,13 +48,36 @@ export default class SideBar extends Component {
         </Content>
         <Footer>
           <Left>
-            <ThemeChanger />
+            <Button
+              primary
+              transparent
+              onPress={() => this.props.toggleTheme()}>
+              <Icon name={icon} />
+            </Button>
           </Left>
         </Footer>
       </Container>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {...state};
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      ...ThemeActions,
+    },
+    dispatch,
+  );
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SideBar);
 
 const styles = StyleSheet.create({
   listContainer: {

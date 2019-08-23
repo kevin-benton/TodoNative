@@ -1,5 +1,6 @@
 import {createReducer, createActions} from 'reduxsauce';
 import Immutable from 'seamless-immutable';
+import {clearThemeCache} from 'native-base-shoutem-theme';
 
 /* ------------- Constants ------------- */
 export const LIGHT_THEME = 'light';
@@ -8,8 +9,7 @@ export const DIM_THEME = 'dim';
 /* ------------- Types and Actions ------------- */
 
 const {Types, Creators} = createActions({
-  useLightTheme: null,
-  useDimTheme: null,
+  toggleTheme: null,
 });
 
 export const ThemeTypes = Types;
@@ -29,12 +29,18 @@ export const ThemeSelectors = {
 
 /* ------------- Reducers ------------- */
 
-export const useLightTheme = state => state.merge({currentTheme: LIGHT_THEME});
-export const useDimTheme = state => state.merge({currentTheme: DIM_THEME});
+export const toggleTheme = state => {
+  clearThemeCache();
+
+  if (state.currentTheme === LIGHT_THEME) {
+    return state.merge({currentTheme: DIM_THEME});
+  } else {
+    return state.merge({currentTheme: LIGHT_THEME});
+  }
+};
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.USE_LIGHT_THEME]: useLightTheme,
-  [Types.USE_DIM_THEME]: useDimTheme,
+  [Types.TOGGLE_THEME]: toggleTheme,
 });
