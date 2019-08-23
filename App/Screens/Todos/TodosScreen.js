@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
-import {SafeAreaView} from 'react-navigation';
+import {StyleSheet, SafeAreaView} from 'react-native';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Container} from 'native-base';
