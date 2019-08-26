@@ -33,33 +33,33 @@ const createTodo = name => {
 
 const updateTodo = todo => {
   return (dispatch, getState) => {
-    TodoApiService.updateTodo(todo)
-      .then(res => {
-        // Replace the changed todo with the new state.
-        const {todos} = getState();
-        dispatch(
-          TodosActions.setTodos(
-            todos.data.map(x => [todo].find(y => y.id === x.id) || x),
-          ),
-        );
-      })
-      .catch(error => {
-        dispatch(TodosActions.setTodosError(error.message));
-      });
+    // Update the list immideately for UI responsive. Revert on error.
+    const {todos} = getState();
+    dispatch(
+      TodosActions.setTodos(
+        todos.data.map(x => [todo].find(y => y.id === x.id) || x),
+      ),
+    );
+
+    // Nothing to do on success.
+    TodoApiService.updateTodo(todo).catch(error => {
+      dispatch(TodosActions.setTodos(todos.data));
+      dispatch(TodosActions.setTodosError(error.message));
+    });
   };
 };
 
 const deleteTodo = id => {
   return (dispatch, getState) => {
-    TodoApiService.deleteTodo(id)
-      .then(res => {
-        // Remove the deleted todo from the todo list.
-        const {todos} = getState();
-        dispatch(TodosActions.setTodos(todos.data.filter(x => x.id !== id)));
-      })
-      .catch(error => {
-        dispatch(TodosActions.setTodosError(error.message));
-      });
+    // Update the list immideately for UI responsive. Revert on error.
+    const {todos} = getState();
+    dispatch(TodosActions.setTodos(todos.data.filter(x => x.id !== id)));
+
+    // Nothing to do on success.
+    TodoApiService.deleteTodo(id).catch(error => {
+      dispatch(TodosActions.setTodos(todos.data));
+      dispatch(TodosActions.setTodosError(error.message));
+    });
   };
 };
 
